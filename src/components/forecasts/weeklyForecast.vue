@@ -1,30 +1,30 @@
 <template>
   <div class="day firstDay">
-    <span>{{getFirstDay()}}</span>
+    <span>{{getDay(1)}}</span>
     <span class="weather__description">
       {{weather.list[weatherDayID].weather[0].main}}
     </span>
   </div>
   <div class="day secondDay">
-  <span>{{getSecondDay()}}</span>
+  <span>{{getDay(2)}}</span>
   <span class="weather__description">
     {{weather.list[weatherDayID*2].weather[0].main}}
   </span>
   </div>
   <div class="day thirdDay">
-    <span>{{getThirdDay()}}</span>
+    <span>{{getDay(3)}}</span>
     <span class="weather__description">
       {{weather.list[weatherDayID*3].weather[0].main}}
     </span>
   </div>
   <div class="day fourthDay">
-    <span>{{getFourthDay()}}</span>
+    <span>{{getDay(4)}}</span>
     <span class="weather__description">
       {{weather.list[weatherDayID*4].weather[0].main}}
     </span>
   </div>
   <div class="day fifthDay">
-    <span>{{getFifthDay()}}</span>
+    <span>{{getDay(5)}}</span>
     <span class="weather__description">
       {{weather.list[weatherDayID*4.5].weather[0].main}}
     </span>
@@ -43,21 +43,11 @@ export default {
     }
   },
   methods:{
-    getFirstDay(){
-      return(this.days[this.today.getDay() + 1])
+    getDay(day) {
+        let thisDay =  this.today.getDay()
+        console.log(thisDay + day)
+        return thisDay + day >= 7 ? this.days[thisDay + day - 7] : this.days[thisDay + day]
     },
-    getSecondDay(){
-      return(this.days[this.today.getDay() + 2])
-    },
-    getThirdDay(){
-      return(this.days[this.today.getDay() + 3])
-    },
-    getFourthDay(){
-      return(this.days[this.today.getDay() + 4])
-    },
-    getFifthDay(){
-      return(this.days[this.today.getDay() + 5])
-    }
   },
     props: {
       weather: {type: Object}
