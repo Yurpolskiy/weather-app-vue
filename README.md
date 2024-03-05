@@ -1,4 +1,4 @@
-# vue10number3
+# Weather app with Vue-js usage
 
 ## Project setup
 ```
